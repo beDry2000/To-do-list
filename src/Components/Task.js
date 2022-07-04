@@ -6,12 +6,15 @@ function Task() {
     const list = useContext(TodoContext);
     const tasks = list.list;
     const [show, setShow] = useState(false);
-    
+
     const [editTask, setEditTask] = useState({});
     const handleShow = (task) => {
         setEditTask(task);
         setShow(!show);
         console.log('lay duoc thk', task);
+    }
+    const handleDisplay = (bool) => {
+        setShow(bool);
     }
 
     console.log('List moiw sau khi edit', tasks);
@@ -44,8 +47,12 @@ function Task() {
                         ))
                     }
                 </tbody>
-            </table> 
-           {show && <Edit task={editTask}/>}
+            </table>
+            {
+                show && <Edit
+                    task={editTask}
+                    display={handleDisplay}
+                />}
         </>
     )
 }

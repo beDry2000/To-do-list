@@ -2,9 +2,10 @@ import { useState, useContext } from 'react';
 import { TodoContext } from '../TodoContext';
 
 
-function Edit({ task: { id, name, des, date } }) {
+function Edit({ display, task: { id, name, des, date } }) {
 
     const data = useContext(TodoContext);
+    
 
     const [name2, setName] = useState(name)
     const [des2, setDes] = useState(des)
@@ -18,7 +19,7 @@ function Edit({ task: { id, name, des, date } }) {
             date2
         }
         data.handleEdit(editTask);
-
+        display(false)
     }
 
 
